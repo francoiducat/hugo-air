@@ -9,8 +9,7 @@ Main color for the website
 It can be overridden in the config file by setting "Params.mainColor" to any color value
 */
 :root {
-  --main-color: #035c8c;
-  /* default color */
+  --main-color: #035c8c; /* default color */
 }
 
 /*
@@ -19,17 +18,82 @@ It can be overridden in the config file by setting "Params.mainColor" to any col
 =======================================================
 */
 
-body {
-  margin-top: 0;
+section div h1 {
+  color:var(--main-color);
 }
 
-@media (min-width: 992px) {
-  body {
-    background-color: #fff;
-    font-family: "Roboto", serif;
-    color: #565555;
+section.odd p,
+section.odd h1 {
+  text-align: right;
+  color: #fff;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  position: relative;
+  width: 90%; /* Responsive width */
+}
+
+/* Base Triangle Arrow */
+section.odd::after {
+  content: "";
+  position: absolute;
+  bottom: -40px; /* Space below the section */
+  width: 0;
+  height: 0;
+  border-left: 70px solid transparent;
+  border-right: 70px solid transparent;
+  border-top: 60px solid var(--main-color); /* Triangle shape */
+}
+
+/* Left Triangle - Aligns Exactly with Left Edge of .container */
+section.odd-left::after {
+  left: calc((100% - min(960px, 90vw)) / 2); /* Left edge of .container */
+  transform: translateX(0); /* No additional shifting */
+}
+
+/* Right Triangle - Aligns Exactly with Right Edge of .container */
+section.odd-right::after {
+  left: calc((100% - min(960px, 90vw)) / 2 + min(960px, 90vw)); /* Right edge of .container */
+  transform: translateX(-100%); /* Aligns correctly */
+}
+
+/* Ensure Sections Have Proper Positioning */
+section.odd {
+  position: relative;
+  background-color: var(--main-color);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .container {
+    width: 95%;
+  }
+
+  section.odd-left::after {
+    left: calc((100% - min(960px, 95vw)) / 2);
+  }
+
+  section.odd-right::after {
+    left: calc((100% - min(960px, 95vw)) / 2 + min(960px, 95vw));
   }
 }
+
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+  }
+
+  section.odd-left::after {
+    left: calc((100% - 100vw) / 2);
+  }
+
+  section.odd-right::after {
+    left: calc((100% - 100vw) / 2 + 100vw);
+  }
+}
+
 
 h1,
 h2,
@@ -88,7 +152,6 @@ p {
 =======================================================
 */
 
-
 .navbar {
   --bs-navbar-padding-y: 0rem;
   background: transparent;
@@ -102,18 +165,19 @@ p {
 .navbar-brand,
 .navbar-nav .nav-link {
   color: #fff !important;
-  text-shadow: 2px 2px 2px rgba(0, 0, 0, .2);
-  transition: color 0.3s ease;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+  transition: color 0.3s ease, border-top 0.3s ease;
 }
 
-// Optional: Ensure links stay white even when active or hovered
+/* Active and Hover State */
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link:focus,
 .navbar-nav .nav-link.active {
   color: rgba(255, 255, 255, 1) !important;
-  text-shadow: 2px 2px 2px rgba(0, 0, 0, .2);
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
 }
 
+/* Ensure the navbar toggler is visible on mobile */
 .navbar-toggler-icon {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
@@ -140,7 +204,7 @@ p {
 .navbar-brand:hover,
 .nav-link:hover {
   color: #fff;
-  text-shadow: 2px 2px 2px rgba(0, 0, 0, .2);
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
 }
 
 .navbar-toggler,
@@ -151,28 +215,100 @@ p {
   color: transparent;
 }
 
+/* Desktop Styles */
+/*
+=======================================================
+*                Navbar, Menu Links                   *
+=======================================================
+*/
+
+.navbar {
+  --bs-navbar-padding-y: 0rem;
+  background: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1050;
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+  color: #fff !important;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+  transition: color 0.3s ease, border-top 0.3s ease;
+}
+
+/* Active and Hover State */
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus,
+.navbar-nav .nav-link.active {
+  color: rgba(255, 255, 255, 1) !important;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Ensure the navbar toggler is visible on mobile */
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+@media (max-width: 991px) {
+  .navbar-collapse {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: auto;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 5px;
+    backdrop-filter: blur(3px);
+  }
+
+  .navbar-nav {
+    align-items: flex-end;
+    text-align: right;
+  }
+}
+
+.navbar-brand:focus,
+.navbar-brand:hover,
+.nav-link:hover {
+  color: #fff;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-toggler,
+.navbar-toggler:hover,
+.navbar-toggler:focus,
+.navbar-toggler:active {
+  border: none;
+  color: transparent;
+}
+
+/* Desktop Styles */
 @media (min-width: 992px) {
   .navbar ul li a {
     border-top: 5px solid transparent;
     border-bottom: 5px solid transparent;
     padding-top: 15px;
     padding-bottom: 15px;
+    transition: border-top 0.3s ease;
   }
-}
 
-@media (min-width: 992px) {
-  .navbar ul li a:hover {
+  /* Apply the white border to both hovered and active menu items */
+  .navbar ul li a:hover,
+  .navbar ul li a.active {
     border-top: 5px solid #fff;
     border-bottom: 5px solid transparent;
   }
 }
 
+/* Adjust margin for menu links */
 @media (min-width: 992px) {
   .navbar-expand-lg .navbar-nav .nav-link {
     margin-right: 2rem;
   }
 }
-
 
 /*
 =======================================================

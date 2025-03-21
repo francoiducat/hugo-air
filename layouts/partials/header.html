@@ -1,7 +1,7 @@
 <header class="mb-3">
   <!-- Top Navigation Bar -->
   <nav class="navbar navbar-expand-lg ">
-    <div class="container-fluid">
+    <div class="container">
       <a class="navbar-brand main-color" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,33 +9,45 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
+         
           <!-- Dynamic Menu From config.yml file -->
           {{ range .Site.Menus.main }}
-          <li class="nav-item">
-            <a class="nav-link" href="{{ .URL }}">{{ .Name }}</a>
-          </li>
+
+            {{ $current := trim $.Page.RelPermalink "/" }}
+            {{ $menuLink := trim .URL "/" }}
+            {{ $isActive := in $current $menuLink }}
+            {{ if or (eq .URL "/") (eq .URL "") }}
+            {{ $isActive = eq $.Page.RelPermalink "/" }} <!-- set $isActive to true only on home page -->
+            {{ end }}
+            {{ $active := cond $isActive "active" "" }}
+
+            <li class="nav-item">
+              <a href="{{ .URL }}" class="nav-link {{ $active }}" alt="{{ .URL }}">{{ .Name }}</a>
+            </li>
+
           {{ end }}
         </ul>
       </div>
     </div>
   </nav>
-
+  <!-- Dynamic Header Image -->
   {{ with .Resources.Get "featured-image.jpg" }}
 
-{{ $largeImage := .Resize "960x webp q75"}}
-{{ $smallImage := .Resize "480x webp q75"}}
+  {{ $largeImage := .Resize "960x webp q75"}}
+  {{ $smallImage := .Resize "480x webp q75"}}
 
-<div class="headerImage" small-Image="{{ $smallImage.RelPermalink | relURL }}"
-  large-Image="{{ $largeImage.RelPermalink | relURL }}">
+  <div class="headerImage" small-Image="{{ $smallImage.RelPermalink | relURL }}"
+    large-Image="{{ $largeImage.RelPermalink | relURL }}">
 
-  {{ else }}
-  <!-- If the featured-image.jpg doesn't exist, use the default static image -->
-  <div class="headerImage" small-Image="{{ "img/header-480.jpg" | relURL }}" large-Image="{{ "img/header-960.jpg" | relURL }}">
-    {{ end }}
+    {{ else }}
+    <!-- If the featured-image.jpg doesn't exist, use the default static image -->
+    <div class="headerImage" small-Image="{{ "img/header-480.jpg" | relURL }}" large-Image="{{ "img/header-960.jpg" |
+      relURL }}">
+      {{ end }}
 
-    <img src="{{ "img/loader.gif" | relURL }}" alt="Loading..." class="loader" />
+      <img src="{{ "img/loader.gif" | relURL }}" alt="Loading..." class="loader" />
 
-    <div class="
+      <div class="
       color-overlay
       d-flex
       flex-column
@@ -43,12 +55,12 @@
       align-items-center
       align-content-center">
 
-      <h1>{{ .Title }}</h1>
-      {{ with .Params.catchline }}
-      <h2>{{ . }}</h2>
-      {{ end }}
+        <h1>{{ .Title }}</h1>
+        {{ with .Params.catchline }}
+        <h2>{{ . }}</h2>
+        {{ end }}
+
+      </div>
 
     </div>
-
-  </div>
 </header>

@@ -1,0 +1,20 @@
+{{ define "main" }}
+
+<main>
+    {{ $homepage := .Site.GetPage "landing-page" }}
+
+    {{ range $index, $page := $homepage.Pages.ByWeight }}
+        {{ $odd := mod $index 2 }}
+        {{ $position := cond (mod (div $index 2) 2) "odd-left" "odd-right" }}
+        <section class="container-fluid pb-5 pt-5{{ if $odd }} odd {{ $position }}{{ end }}">
+            <div class="container">
+
+                <h1>{{ .Title }}</h1>
+                <p>{{ .Content }}</p>
+            </div>
+        </section>
+    {{ end }}
+
+</main>
+
+{{ end }}

@@ -21,6 +21,7 @@ Clone this repo and run `hugo serve` command
 ## Features
 
 - Responsive
+- Single-page landing homepage
 - Accessible
 - Boostrap
 - Customizable main color
@@ -28,7 +29,6 @@ Clone this repo and run `hugo serve` command
 - Responsive Header Image from page bundle
 - Image Gallery from page bundle available as **shortcode** or template page. (instagram or masonry style)
 - Smooobu shortcode
-
 
 ## Installation
 
@@ -45,9 +45,9 @@ git submodule add https://github.com/francoiducat/hugo-air.git themes/air
 ### Edit your config file
 
 ```yaml
-baseURL: https://hugo-air-theme.com/
+baseURL: https://example.com/
 languageCode: en-us
-title: Hugo Air Theme
+title: Example Site
 theme: air
 params:
   author:
@@ -56,26 +56,28 @@ params:
   gmaps_url: https://www.google.com/maps/d/u/0/embed?mid=1UySq5HRbcRKL90dKuFpX6PRRtx0&ehbc=2E312F
   mainColor: "#386641"
   footer: "Hugo Air theme is great and customizable"
-  scripts:
-    bootstrap: |
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" async></script>
-    imageloaded: |
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/imagesloaded/4.1.4/imagesloaded.pkgd.min.js" async></script>
-    masonry: |
-     <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
-    lightbox: |
-      <script src="https://cdn.jsdelivr.net/npm/bs5-lightbox@1.8.3/dist/index.bundle.min.js" async></script>
 menu:
   main:
-  - name: Welcome
-    url: /pages/welcome-page
+  main:
+  - name: Home 
+    url: /
     weight: 20
     params:
       target: 
-  footer:
-  - name: Legal Notice
-    url: /pages/legal-notice
+  - name: Features 
+    url: /features
     weight: 30
+    params:
+      target: 
+  - name: Landing Page
+    url: /landing-page
+    weight: 40
+    params:
+      target: 
+  footer:
+  - name: Home 
+    url: /
+    weight: 20
     params:
       target: 
 ```
@@ -174,3 +176,42 @@ Automatically loaded from the `static/img` folder.
 When listing pages/posts, it displays boostrap cards with a thumbnail image.  
 By default it uses the card image from  `static/img/card.jpg`
 Customize the card image by adding one image called `featured-image.jpg` or `card.jpg ` in your page bundle.  
+
+### Single-page landing homepage
+
+Add pages to a folder. These page will render as a single-page.
+
+Example with this page bundle:
+
+```yaml
+content/
+└── landing-page/
+    └── page-1/                 # Page Bundle
+        ├── featured-image.jpg  # 
+        ├── index.md            # Page 1
+    ├── _index.md               # File that calls the landing-page type
+    ├── page-2.md               # Page 2
+    ├── page-3.md               # Page 3
+    ├── page-4.md               # Page 4
+    └── page-5.md               # Page 5
+```
+
+Edit your  `content/landing-page/_index.md` to add `type: landing-page`
+
+```yaml 
+---
+title: Landing Page
+catchline: Awesome One Page Landing Page
+type: landing-page
+---
+```
+
+Add a weight to each page to render them by weight ✨: 
+
+```yaml
+---
+title: Page 1
+weight: 10
+---
+Content of Page 1
+```

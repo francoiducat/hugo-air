@@ -14,5 +14,5 @@ params:
 ✅ Add this block `{{` `< gallery-masonry page="shortcode-gallery" >` `}}` in your `md` file to display your masonry image gallery.  
 
 
-{{< gallery-masonry page="shortcode-gallery" >}}
+{{< gallery-insta page="shortcode-gallery" >}}
 
