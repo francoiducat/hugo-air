@@ -4,16 +4,26 @@ The intent of this theme is to provide a solid starting place for Hugo sites wit
 
 ## Demo
 
-| LIVE DEMO                                                 	|   	| LOCAL DEMO                                     	|
-|-----------------------------------------------------------	|---	|------------------------------------------------	|
-| [francoiducat.github.io/hugo-air](https://francoiducat.github.io/hugo-air) 	|   	| Clone this repo and run  `hugo serve`  command 	|
+| LIVE DEMO                                                 	                |
+|-----------------------------------------------------------------------------|
+| [francoiducat.github.io/hugo-air](https://francoiducat.github.io/hugo-air) 	|
+
+
+| LOCAL DEMO                                     	|
+|-------------------------------------------------|
+|  Clone this repo and run  `hugo serve` command  |
 
 ## Features
-|      Awesome Features          	|                                            	|                                      	|
-|------------------	|--------------------------------------------	|--------------------------------------	|
-| ✨ **Responsive** 	| ✨ **Bootstrap** ready                      	| ✨ **Image Gallery** from page bundle 	|
-| ✨ Accessible     	| ✨ Embeded Google Maps                      	| ✨ **Single-page** landing homepage   	|
-| ✨ Customizable   	| ✨ **Custom Header Image** from page bundle 	| ✨ Smooobu Booking **shortcode**      	|
+|  Awesome Features  	                                                            |
+|---------------------------------------------------------------------------------|       
+| ✨ Full **Responsive**                                                          |
+| ✨ **Bootstrap** ready                                                          |
+| ✨ **Custom Header Image** from page bundle                                     |
+| ✨ Shortcode **Image Gallery** from page bundle (Instagram or Masonry Style) 	 |               
+| ✨ Page Type **Image Gallery** from page bundle (Instagram or Masonry Style)    |
+| ✨ **Single-page** landing homepage   	                                         |
+| ✨ Embeded Google Maps                      	                                   |
+| ✨ Smooobu Booking **shortcode**      	                                         |
 
 ## Installation
 
@@ -54,6 +64,10 @@ menu:
     weight: 30
     params:
       target: 
+  - name: Shortcode Gallery
+    pageRef: /features/shortcode-gallery/
+    parent: Features
+    weight: 20
   - name: Landing Page
     url: /landing-page
     weight: 40
@@ -65,6 +79,14 @@ menu:
     weight: 20
     params:
       target: 
+
+markup:
+  goldmark:
+    parser:
+      attribute:
+        block: true
+    renderer:
+      unsafe: true
 ```
 
 ### Customize main color

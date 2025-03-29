@@ -1,4 +1,4 @@
-baseURL: http://localhost:1313/
+baseURL: http://localhost:1313/hugo-air
 languageCode: en-us
 title: Hugo Air Theme
 params:
@@ -16,33 +16,43 @@ services:
 menu:
   main:
   - name: Home 
-    url: /
+    pageRef: /
     weight: 20
-    params:
-      target: 
-  - name: Features 
-    url: /features
+  - name: Features
+    pageRef: /features
     weight: 30
-    params:
-      target: 
-  - name: Landing Page
-    url: /landing-page
+  - name: Shortcode Gallery
+    pageRef: /features/shortcode-gallery/
+    parent: Features
+    weight: 20
+  - name: Page Type Gallery
+    pageRef: /features/gallery-page-type
+    parent: Features
+    weight: 30
+  - name: Custom Header Image
+    pageRef: /features/default-header/
+    parent: Features
     weight: 40
-    params:
-      target: 
+  - name: Responsive Google Maps
+    pageRef: /features/responsive-google-maps
+    parent: Features
+    weight: 50
+  - name: Landing Page
+    pageRef: /landing-page
+    weight: 40
   footer:
   - name: Home 
-    url: /
+    pageRef: /
     weight: 20
     params:
       target: 
   - name: Features 
-    url: /features
+    pageRef: /features
     weight: 30
     params:
       target: 
   - name: Landing Page
-    url: /landing-page
+    pageRef: /landing-page
     weight: 40
     params:
       target: 
