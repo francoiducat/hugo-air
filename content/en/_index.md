@@ -1,17 +1,33 @@
+---
+title: Hugo Air Theme
+params:
+  catchline: Beautiful Responsive theme!
+gmaps: true
+---
+
 # Air, a theme for [Hugo](https://gohugo.io/), a framework for building websites.
 
 The intent of this theme is to provide a solid starting place for Hugo sites with basic features and include best practices for performance, accessibility, and rapid development.
+
+## Github Repository
+
+| LIVE DEMO                                                 	                |
+|-----------------------------------------------------------------------------|
+| [github.com/francoiducat/hugo-air](https://github.com/francoiducat/hugo-air) 	|
+
 
 ## Demo
 
 | LIVE DEMO                                                 	                |
 |-----------------------------------------------------------------------------|
 | [francoiducat.github.io/hugo-air](https://francoiducat.github.io/hugo-air) 	|
+{class="table"}
+
 
 | LOCAL DEMO                                     	|
 |-------------------------------------------------|
 |  Clone this repo and run  `hugo serve` command  |
-
+{class="table"}
 
 ## Features
 |  Awesome Features  	                                                            |
@@ -24,7 +40,7 @@ The intent of this theme is to provide a solid starting place for Hugo sites wit
 | ✨ **Single-page** landing homepage   	                                         |
 | ✨ Embeded Google Maps                      	                                   |
 | ✨ Smooobu Booking **shortcode**      	                                         |
-| ✨ **Multilingual** Support shortcode      	                                   |
+{class="table"} 
 
 ## Installation
 
@@ -41,9 +57,9 @@ git submodule add https://github.com/francoiducat/hugo-air.git themes/air
 ### Edit your config file
 
 ```yaml
-baseURL: https://example.com/
+baseURL: https://francoiducat.github.io/hugo-air/
 languageCode: en-us
-title: Example Site
+title: Hugo Air Theme
 theme: air
 params:
   author:
@@ -53,7 +69,6 @@ params:
   mainColor: "#386641"
   footer: "Hugo Air theme is great and customizable"
 menu:
-  main:
   main:
   - name: Home 
     url: /
@@ -69,14 +84,9 @@ menu:
     pageRef: /features/shortcode-gallery/
     parent: Features
     weight: 20
-  - name: Landing Page
-    url: /landing-page
-    weight: 40
-    params:
-      target: 
   footer:
-  - name: Home 
-    url: /
+  - name: Features 
+    url: /features
     weight: 20
     params:
       target: 
@@ -124,16 +134,6 @@ In your config file, add:
 ```yaml
 params:
   gmaps_url: https://tinyurl.com/mr3uesbx
-```
-
-### Setup Google Analytics 
-
-In your config file, add:
-
-```yaml
-services:
-  googleAnalytics:
-  id: G-12345  #Replace with your Google Analytics ID
 ```
 
 ### Image Gallery
@@ -237,7 +237,7 @@ Content of Page 1
 ## Screenshot
 
  ### Mobile
-![screenshot](https://francoiducat.github.io/hugo-air/img/hugo-air-theme-mobile.jpg)
+{{< img "img/hugo-air-theme-mobile.jpg" "Screenshot of mobile version" >}}
  
  ### Desktop
-![screenshot](https://francoiducat.github.io/hugo-air/img/hugo-air-theme-desktop.jpg)
+{{< img "img/hugo-air-theme-desktop.jpg" "Screenshot of mobile version" >}}

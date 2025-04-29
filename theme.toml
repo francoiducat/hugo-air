@@ -19,4 +19,4 @@ min_version = '0.100.0'
 # If the theme has a single author
 [author]
   name = 'francoiducat'
-  homepage = 'https://notes.ducatillon.net'
+  homepage = 'https://github.com/francoiducat/hugo-air'

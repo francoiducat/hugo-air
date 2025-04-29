@@ -1,13 +1,19 @@
 ---
-title: Hugo Air Theme
+title: Theme Hugo Air
 params:
-  catchline: Beautiful Responsive theme!
+  catchline: Magnifique Theme Responsive!
 gmaps: true
 ---
 
 # Air, a theme for [Hugo](https://gohugo.io/), a framework for building websites.
 
 The intent of this theme is to provide a solid starting place for Hugo sites with basic features and include best practices for performance, accessibility, and rapid development.
+
+## Github Repository
+
+| LIVE DEMO                                                 	                |
+|-----------------------------------------------------------------------------|
+| [github.com/francoiducat/hugo-air](https://github.com/francoiducat/hugo-air) 	|
 
 ## Demo
 
@@ -33,6 +39,8 @@ The intent of this theme is to provide a solid starting place for Hugo sites wit
 | ✨ **Single-page** landing homepage   	                                         |
 | ✨ Embeded Google Maps                      	                                   |
 | ✨ Smooobu Booking **shortcode**      	                                         |
+| ✨ **Multilingual** Support shortcode      	                                   |
+
 {class="table"} 
 
 ## Installation
