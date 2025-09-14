@@ -2,29 +2,29 @@
 
 <main>
     
-    
     {{ $lang := .Site.Language.Lang }}
-
     {{ $homepage := .Site.GetPage "$lang" "landing-page" }}
+    {{ if and $homepage $homepage.Pages }}
+        {{ range $index, $page := $homepage.Pages.ByWeight }}
+            {{ $odd := eq (mod $index 2) 1 }}
+            {{ $position := cond (eq (mod (div $index 2) 2) 1) "odd-left" "odd-right" }}
 
- 
+            <section class="container-fluid pb-5 pt-5{{ if $odd }} odd {{ $position }}{{ end }}">
 
-    
+                <div class="container">
 
-    {{ range $index, $page := $homepage.Pages.ByWeight }}
-        {{ $odd := eq (mod $index 2) 1 }}
-        {{ $position := cond (eq (mod (div $index 2) 2) 1) "odd-left" "odd-right" }}
-
-        <section class="container-fluid pb-5 pt-5{{ if $odd }} odd {{ $position }}{{ end }}">
-
-            <div class="container">
-
-                <h1>{{ .Title }}</h1>
-                <p>{{ .Content }}</p>
-            </div>
-        </section>
+                    <h1>{{ .Title }}</h1>
+                    <p>{{ .Content }}</p>
+                </div>
+            </section>
+        {{ end }}
+    {{ else }}
+    <!-- Affichage basique d'une page landing-page -->
+    <div class="container">
+        <h1>{{ .Title | default "Landing Page" }}</h1>
+        <div>{{ .Content | default " Awesome One Page Landing Page is Empty!" }}</div>
+    </div>
     {{ end }}
-
 </main>
 
 {{ end }}
