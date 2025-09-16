@@ -25,7 +25,7 @@ The intent of this theme is to provide a solid starting place for Hugo sites wit
 
 | LOCAL DEMO                                     	|
 |-------------------------------------------------|
-|  Clone this repo and run  `hugo serve` command  |
+|  Clone this repo, rename `exampleSite` folder to `content` and run  `hugo serve` command  |
 {class="table"}
 
 ## Features
