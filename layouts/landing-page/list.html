@@ -3,7 +3,7 @@
 <main>
     
     {{ $lang := .Site.Language.Lang }}
-    {{ $homepage := .Site.GetPage "$lang" "landing-page" }}
+    {{ $homepage := .Site.GetPage (printf "/%s/landing-page" $lang) }}
     {{ if and $homepage $homepage.Pages }}
         {{ range $index, $page := $homepage.Pages.ByWeight }}
             {{ $odd := eq (mod $index 2) 1 }}
