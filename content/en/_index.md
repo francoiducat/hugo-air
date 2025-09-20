@@ -1,36 +1,25 @@
 ---
-title: Hugo Air Theme
+title: Theme Hugo Air
 params:
-  catchline: Beautiful Responsive theme!
+  catchline: Magnifique Theme Responsive!
 gmaps: true
 ---
 
-# Air, a theme for [Hugo](https://gohugo.io/), a framework for building websites.
+# Air, a theme for [Hugo](https://gohugo.io/).
 
 The intent of this theme is to provide a solid starting place for Hugo sites with basic features and include best practices for performance, accessibility, and rapid development.
 
 ## Github Repository
 
-| LIVE DEMO                                                 	                |
-|-----------------------------------------------------------------------------|
-| [github.com/francoiducat/hugo-air](https://github.com/francoiducat/hugo-air) 	|
+[github.com/francoiducat/hugo-air](https://github.com/francoiducat/hugo-air)
 
+## Demo Site
 
-## Demo
-
-| LIVE DEMO                                                 	                |
-|-----------------------------------------------------------------------------|
-| [francoiducat.github.io/hugo-air](https://francoiducat.github.io/hugo-air) 	|
-{class="table"}
-
-
-| LOCAL DEMO                                     	|
-|-------------------------------------------------|
-|  Clone this repo and run  `hugo serve` command  |
-{class="table"}
+[francoiducat.github.io/hugo-air-demo](https://francoiducat.github.io/hugo-air-demo) 
 
 ## Features
-|  Awesome Features  	                                                            |
+
+|    	                                                                            |
 |---------------------------------------------------------------------------------|       
 | ✨ Full **Responsive**                                                          |
 | ✨ **Bootstrap** ready                                                          |
@@ -41,7 +30,9 @@ The intent of this theme is to provide a solid starting place for Hugo sites wit
 | ✨ Embeded Google Maps                      	                                   |
 | ✨ Smooobu Booking **shortcode**      	                                         |
 | ✨ **Multilingual** Support shortcode      	                                   |
+
 {class="table"} 
+
 
 ## Installation
 
@@ -58,7 +49,7 @@ git submodule add https://github.com/francoiducat/hugo-air.git themes/air
 ### Edit your config file
 
 ```yaml
-baseURL: https://francoiducat.github.io/hugo-air/
+baseURL: https://francoiducat.github.io/hugo-air-demo/
 languageCode: en-us
 title: Hugo Air Theme
 theme: air

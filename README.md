@@ -1,20 +1,22 @@
-# Air, a theme for [Hugo](https://gohugo.io/), a framework for building websites.
+# Air, a theme for [Hugo](https://gohugo.io/).
 
 The intent of this theme is to provide a solid starting place for Hugo sites with basic features and include best practices for performance, accessibility, and rapid development.
 
-## Demo
+## Live Demo
 
-| LIVE DEMO                                                 	                |
-|-----------------------------------------------------------------------------|
-| [francoiducat.github.io/hugo-air](https://francoiducat.github.io/hugo-air) 	|
+Just visit [francoiducat.github.io/hugo-air-demo](https://francoiducat.github.io/hugo-air-demo)
 
-| LOCAL DEMO                                     	|
-|-------------------------------------------------|
-|  Clone this repo and run  `hugo serve` command  |
+## Local Demo
+
+1. Clone [this repo](https://francoiducat.github.io/hugo-air-demo)
+2. Add markdown files in the content folder
+3. Run `hugo serve`
+
 
 
 ## Features
-|  Awesome Features  	                                                            |
+
+|    	  Awesome features                                                          |
 |---------------------------------------------------------------------------------|       
 | ✨ Full **Responsive**                                                          |
 | ✨ **Bootstrap** ready                                                          |
