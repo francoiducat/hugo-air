@@ -2,7 +2,7 @@ name = 'Air'
 license = 'MIT'
 licenselink = 'https://github.com/owner/repo/LICENSE'
 description = 'Hugo Air Theme'
-version = 'v0.0.16'
+version = 'v0.0.17'
 screenshot = '/images/screenshot.jpg/'
 
 # The home page of the theme, where the source can be found
