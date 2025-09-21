@@ -8,8 +8,8 @@ screenshot = '/images/screenshot.jpg/'
 # The home page of the theme, where the source can be found
 homepage = 'https://github.com/francoiducat/hugo-air'
 
-# If you have a running demo of the theme
-demosite = 'https://francoiducat.github.io/hugo-air'
+# Demo of the theme
+demosite = 'https://francoiducat.github.io/hugo-air-demo'
 
 # Taxonomy terms
 tags = ['blog', 'company', 'website', 'portfolio']
