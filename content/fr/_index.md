@@ -36,12 +36,21 @@ The intent of this theme is to provide a solid starting place for Hugo sites wit
 
 ## Installation
 
-### As Git Submodule
 
-Inside the folder of your Hugo site run:
+### First Installation: as a git submodule
+
+Install Air Theme as a Git Submodule. Naviguate to the folder of your Hugo site run:
 
 ```bash
 git submodule add https://github.com/francoiducat/hugo-air.git themes/air
+```
+
+### Update an existing installation
+
+If you already have Air Theme installed, naviguate to the folder of your Hugo site run: 
+
+```bash
+git submodule update --remote --merge
 ```
 
 ## Usage

@@ -13,7 +13,6 @@ Just visit [francoiducat.github.io/hugo-air-demo](https://francoiducat.github.io
 3. Run `hugo serve`
 
 
-
 ## Features
 
 |    	  Awesome features                                                          |
@@ -30,12 +29,20 @@ Just visit [francoiducat.github.io/hugo-air-demo](https://francoiducat.github.io
 
 ## Installation
 
-### As Git Submodule
+### First Installation: as a git submodule
 
-Inside the folder of your Hugo site run:
+Install Air Theme as a Git Submodule. Naviguate to the folder of your Hugo site run:
 
 ```bash
 git submodule add https://github.com/francoiducat/hugo-air.git themes/air
+```
+
+### Update an existing installation
+
+If you already have Air Theme installed, naviguate to the folder of your Hugo site run: 
+
+```bash
+git submodule update --remote --merge
 ```
 
 ## Usage
@@ -55,7 +62,6 @@ params:
   mainColor: "#386641"
   footer: "Hugo Air theme is great and customizable"
 menu:
-  main:
   main:
   - name: Home 
     url: /
