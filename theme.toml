@@ -12,7 +12,7 @@ homepage = 'https://github.com/francoiducat/hugo-air'
 demosite = 'https://francoiducat.github.io/hugo-air-demo'
 
 # Taxonomy terms
-tags = ['blog', 'company', 'website', 'portfolio']
+tags = ['gallery', 'blog', 'company', 'website', 'portfolio']
 features = ['responsive', 'images gallery', 'page bundle gallery', 'masonry image gallery', 'instagram image gallery', 'google maps', 'bootstrap', 'shortcodes']
 min_version = '0.100.0'
 
