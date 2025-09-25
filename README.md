@@ -23,7 +23,7 @@ Just visit [francoiducat.github.io/hugo-air-demo](https://francoiducat.github.io
 | ✨ Shortcode **Image Gallery** from page bundle (Instagram or Masonry Style) 	 |               
 | ✨ Page Type **Image Gallery** from page bundle (Instagram or Masonry Style)    |
 | ✨ **Single-page** landing homepage   	                                         |
-| ✨ Embeded Google Maps                      	                                   |
+| ✨ Embedded Google Maps                      	                                   |
 | ✨ Smooobu Booking **shortcode**      	                                         |
 | ✨ **Multilingual** Support shortcode      	                                   |
 
@@ -196,10 +196,10 @@ Automatically loaded from the `static/img` folder.
 - `header-960.jpg` for screens higher than 960px
 - `header-480.jpg` for screens lower than 960px
 
-### Custom Boostrap Card image
+### Custom Bootstrap Card image
 
 #### Use as featured card image in `list.html`
-When listing pages/posts, it displays boostrap cards with a thumbnail image.  
+When listing pages/posts, it displays bootstrap cards with a thumbnail image.  
 By default it uses the card image from  `static/img/card.jpg`
 Customize the card image by adding one image called `featured-image.jpg` or `card.jpg ` in your page bundle.  
 
