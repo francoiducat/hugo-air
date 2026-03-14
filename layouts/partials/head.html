@@ -1,8 +1,78 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="{{ .Site.Title }} | {{ .Title }} | {{ .Params.catchline }} | {{ .Summary }}">
-  <title>{{ .Site.Title }} | {{ .Title }} </title>
+  <title>{{ if .IsHome }}{{ .Site.Title }} - Location de maisons de vacances à l'Île d'Yeu{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+  <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Summary | truncate 160 }}{{ end }}">
+  <meta name="keywords" content="{{ .Site.Params.keywords }}">
+  <link rel="canonical" href="{{ .Permalink }}">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
+  <meta property="og:description" content="{{ if .Description }}{{ .Description }}{{ else if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Summary | truncate 160 }}{{ end }}">
+  <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+  <meta property="og:url" content="{{ .Permalink }}">
+  {{ $ogImage := "" }}
+  {{ with .Resources.GetMatch "featured-image*" }}
+    {{ $ogImage = .Permalink }}
+  {{ else }}
+    {{ with .Site.Home }}
+      {{ with .Resources.GetMatch "featured-image*" }}
+        {{ $ogImage = .Permalink }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+  {{ if not $ogImage }}
+    {{ $ogImage = "featured-image.jpg" | absURL }}
+  {{ end }}
+  <meta property="og:image" content="{{ $ogImage }}">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
+  <meta name="twitter:description" content="{{ if .Description }}{{ .Description }}{{ else if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Summary | truncate 160 }}{{ end }}">
+  <meta name="twitter:image" content="{{ $ogImage }}">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VacationRental",
+    "name": "{{ .Site.Title }}",
+    "image": "{{ $ogImage }}",
+    "url": "{{ .Site.BaseURL }}",
+    "telephone": "+330609629908",
+    "hasMap": "{{ .Site.Params.gmaps_url }}",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Chemin de la Détourne",
+      "addressLocality": "L'Île-d'Yeu",
+      "postalCode": "85350",
+      "addressCountry": "FR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 46.7247,
+      "longitude": -2.3484
+    },
+    "description": "{{ .Site.Params.description }}",
+    "priceRange": "€€",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "opens": "00:00",
+      "closes": "23:59"
+    }
+  }
+  </script>
 
   <!-- Favicon -->
   <link rel="icon" href="{{ "favicon.ico" | relURL }}" type="image/x-icon">
