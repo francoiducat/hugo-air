@@ -1,15 +1,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ if .IsHome }}{{ .Site.Title }} - Location de maisons de vacances à l'Île d'Yeu{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
-  <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Summary | truncate 160 }}{{ end }}">
-  <meta name="keywords" content="{{ .Site.Params.keywords }}">
+  <title>{{ if .IsHome }}{{ .Site.Title }}{{ with .Site.Params.titleSuffix }}{{ . }}{{ end }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+  <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}">
+  <meta name="keywords" content="{{ with .Site.Params.keywords }}{{ . }}{{ end }}">
   <link rel="canonical" href="{{ .Permalink }}">
   <meta name="robots" content="index, follow">
 
   <!-- Open Graph -->
+  <meta property="og:locale" content="{{ site.Language.LanguageCode | default "fr_FR" | replace "-" "_" }}">
+  <meta property="og:site_name" content="{{ .Site.Title }}">
   <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
-  <meta property="og:description" content="{{ if .Description }}{{ .Description }}{{ else if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Summary | truncate 160 }}{{ end }}">
+  <meta property="og:description" content="{{ if .Description }}{{ .Description }}{{ else if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}">
   <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
   <meta property="og:url" content="{{ .Permalink }}">
   {{ $ogImage := "" }}
@@ -30,33 +32,38 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
-  <meta name="twitter:description" content="{{ if .Description }}{{ .Description }}{{ else if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Summary | truncate 160 }}{{ end }}">
+  <meta name="twitter:description" content="{{ if .Description }}{{ .Description }}{{ else if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}">
   <meta name="twitter:image" content="{{ $ogImage }}">
 
   <!-- JSON-LD -->
+  {{ if .Site.Params.schema }}
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "VacationRental",
+    "@type": "{{ .Site.Params.schema.type | default "Website" }}",
     "name": "{{ .Site.Title }}",
     "image": "{{ $ogImage }}",
     "url": "{{ .Site.BaseURL }}",
-    "telephone": "+330609629908",
-    "hasMap": "{{ .Site.Params.gmaps_url }}",
+    {{ with .Site.Params.telephone }}"telephone": "{{ . }}",{{ end }}
+    {{ with .Site.Params.gmaps_url }}"hasMap": "{{ . }}",{{ end }}
+    {{ with .Site.Params.schema.address }}
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Chemin de la Détourne",
-      "addressLocality": "L'Île-d'Yeu",
-      "postalCode": "85350",
-      "addressCountry": "FR"
+      "streetAddress": "{{ .street }}",
+      "addressLocality": "{{ .locality }}",
+      "postalCode": "{{ .postalCode }}",
+      "addressCountry": "{{ .country }}"
     },
+    {{ end }}
+    {{ with .Site.Params.schema.geo }}
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": 46.7247,
-      "longitude": -2.3484
+      "latitude": {{ .latitude }},
+      "longitude": {{ .longitude }}
     },
+    {{ end }}
     "description": "{{ .Site.Params.description }}",
-    "priceRange": "€€",
+    "priceRange": "{{ .Site.Params.schema.priceRange | default "€" }}",
     "openingHoursSpecification": {
       "@type": "OpeningHoursSpecification",
       "dayOfWeek": [
@@ -73,6 +80,7 @@
     }
   }
   </script>
+  {{ end }}
 
   <!-- Favicon -->
   <link rel="icon" href="{{ "favicon.ico" | relURL }}" type="image/x-icon">

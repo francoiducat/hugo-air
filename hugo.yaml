@@ -11,6 +11,22 @@ params:
   gmaps_url: https://tinyurl.com/mr3uesbx
   mainColor: "#035c8c"
   footer: "Hugo Air Theme is a great responsive theme!"
+  description: "Hugo Air Theme is a generic, responsive theme for Hugo static site generator."
+  keywords: "hugo, theme, air, responsive, gallery"
+  telephone: "+33320000000"
+  titleSuffix: " - Responsive Hugo Theme"
+  loadingText: "Loading..."
+  schema:
+    type: "WebSite"
+    priceRange: "$$"
+    address:
+      street: "123 Rue de la Liberté"
+      locality: "Lille"
+      postalCode: "59000"
+      country: "FR"
+    geo:
+      latitude: 50.6402
+      longitude: 3.0440
 
 # Multi-language support
 defaultContentLanguage: fr
