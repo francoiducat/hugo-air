@@ -53,8 +53,11 @@ jobs:
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
           HUGO_ENVIRONMENT: production
         run: |
+          mkdir -p exampleSite/themes
+          ln -s ../../.. exampleSite/themes/air
           hugo \
             --minify \
+            --source exampleSite \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
