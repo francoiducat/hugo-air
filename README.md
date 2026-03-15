@@ -265,6 +265,27 @@ weight: 10
 Content of Page 1
 ```
 
+## Theme Development
+
+If you are developing this theme inside a Hugo site (usually in `themes/air`), remember that this is a **Git submodule**.
+
+### Making changes
+1. Enter the theme directory: `cd themes/air`
+2. Ensure you are on the main branch: `git checkout main`
+3. Make your changes, then commit and push from within the theme directory:
+   ```bash
+   git add .
+   git commit -m "Your feature"
+   git push origin main
+   ```
+4. Go back to your Hugo site root and update the theme pointer:
+   ```bash
+   cd ../..
+   git add themes/air
+   git commit -m "Update theme pointer"
+   git push origin main
+   ```
+
 ## Screenshot
 
  ### Mobile
