@@ -8,9 +8,15 @@ Just visit [francoiducat.github.io/hugo-air-demo](https://francoiducat.github.io
 
 ## Local Demo
 
-1. Clone [this repo](https://francoiducat.github.io/hugo-air-demo)
-2. Add markdown files in the content folder
-3. Run `hugo serve`
+1. Clone this repository into a folder named `air`:
+   ```bash
+   git clone https://github.com/francoiducat/hugo-air.git air
+   ```
+2. Enter the folder: `cd air`
+3. Run the demo:
+   ```bash
+   hugo server -s exampleSite --themesDir ../..
+   ```
 
 
 ## Features
@@ -44,6 +50,16 @@ If you already have Air Theme installed, naviguate to the folder of your Hugo si
 ```bash
 git submodule update --remote --merge
 ```
+
+## Quick Start with Example Site
+
+To get started quickly with the example content:
+
+1.  Copy the contents of `themes/air/exampleSite/content` to your project's `content` directory.
+2.  Copy `themes/air/exampleSite/hugo.yaml` to your project root. **Note:** This will overwrite your existing configuration. If you have existing settings, merge them manually.
+3.  The `hugo.yaml` file contains essential configuration for the theme, including:
+    - **Menu Structure**: `menu.main` and `menu.footer`.
+    - **Theme Params**: `params.mainColor`, `params.gmaps_url`, etc.
 
 ## Usage
 
@@ -133,6 +149,13 @@ In your config file, add:
 params:
   gmaps_url: https://tinyurl.com/mr3uesbx
 ```
+
+### Customizing Favicon
+
+To change the favicon of your site:
+
+1.  Use your favicon or generate it using [favicon.io](https://favicon.io/).
+2.  Copy the generated file (e.g. `favicon.ico`) to your `static/` directory.
 
 ### Setup Google Analytics 
 

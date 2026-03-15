@@ -1,8 +1,11 @@
 # Hugo build directory
 /public/
+/exampleSite/public/
 
 # Hugo resources directory (generated during build)
 /resources/
+/exampleSite/resources/
+/exampleSite/resources/_gen/
 
 # Hugo cache (this can be useful to ignore, especially if it's large)
 .cache/
