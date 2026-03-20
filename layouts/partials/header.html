@@ -33,12 +33,13 @@
 
 
             {{ $isActive := false }}
+            {{ $homePath := absLangURL "/" | relURL }}
 
-            <!-- Handle the homepage link specially, so that it's active only on the homepage -->
-            {{ if eq $menuLink "/" }}
-              {{ $isActive = eq $currentPage $menuLink }} <!-- Only mark homepage as active if current page is exactly "/" -->
+            <!-- Handle the homepage link specially -->
+            {{ if eq $menuLink $homePath }}
+              {{ $isActive = eq $currentPage $menuLink }} 
             {{ else }}
-              <!-- Active logic for non-home pages, check if current is in menuLink (prefix or exact match) -->
+              <!-- Active logic for non-home pages -->
               {{ $isActive = or (eq $currentPage $menuLink) (hasPrefix $currentPage $menuLink) }}
             {{ end }}
 
