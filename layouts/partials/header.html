@@ -61,18 +61,6 @@
             </li>
 
           {{ end }}
-
-          <!-- Language Switcher -->
-          {{ if .IsTranslated }}
-            {{ range .AllTranslations }}
-            <li class="nav-item">
-              <a class="nav-link {{ if eq .Language.Lang $.Lang }}active fw-bold{{ end }}" href="{{ .Permalink }}">
-                {{ .Language.Lang | upper }}
-              </a>
-            </li>
-            {{ end }}
-          {{ end }}
-
         </ul>
       </div>
     </div>

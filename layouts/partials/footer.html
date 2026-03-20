@@ -13,6 +13,20 @@
         </ul>
       </div>
     </div>
+
+    <!-- Language Switcher -->
+    {{ if .IsTranslated }}
+    <div class="row pb-2">
+      <div class="text-center" style="font-size: 0.9rem;">
+        {{ range $index, $element := .AllTranslations }}
+          {{ if $index }} | {{ end }}
+          <a href="{{ .Permalink }}" class="text-white {{ if eq .Language.Lang $.Lang }}fw-bold text-decoration-underline{{ else }}text-decoration-none{{ end }}">
+            {{ .Language.Lang | upper }}
+          </a>
+        {{ end }}
+      </div>
+    </div>
+    {{ end }}
   </div>
 
   <!-- Second Footer Section -->
