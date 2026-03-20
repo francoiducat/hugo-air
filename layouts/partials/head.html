@@ -7,6 +7,14 @@
   <link rel="canonical" href="{{ .Permalink }}">
   <meta name="robots" content="index, follow">
 
+  <!-- Hreflang Tags -->
+  {{ if .IsTranslated }}
+    {{ range .Translations }}
+      <link rel="alternate" hreflang="{{ .Language.LanguageCode }}" href="{{ .Permalink }}">
+    {{ end }}
+    <link rel="alternate" hreflang="x-default" href="{{ .Permalink }}">
+  {{ end }}
+
   <!-- Open Graph -->
   <meta property="og:locale" content="{{ site.Language.LanguageCode | default "fr_FR" | replace "-" "_" }}">
   <meta property="og:site_name" content="{{ .Site.Title }}">
@@ -36,51 +44,7 @@
   <meta name="twitter:image" content="{{ $ogImage }}">
 
   <!-- JSON-LD -->
-  {{ if .Site.Params.schema }}
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "{{ .Site.Params.schema.type | default "Website" }}",
-    "name": "{{ .Site.Title }}",
-    "image": "{{ $ogImage }}",
-    "url": "{{ .Site.BaseURL }}",
-    {{ with .Site.Params.telephone }}"telephone": "{{ . }}",{{ end }}
-    {{ with .Site.Params.gmaps_url }}"hasMap": "{{ . }}",{{ end }}
-    {{ with .Site.Params.schema.address }}
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "{{ .street }}",
-      "addressLocality": "{{ .locality }}",
-      "postalCode": "{{ .postalCode }}",
-      "addressCountry": "{{ .country }}"
-    },
-    {{ end }}
-    {{ with .Site.Params.schema.geo }}
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": {{ .latitude }},
-      "longitude": {{ .longitude }}
-    },
-    {{ end }}
-    "description": "{{ .Site.Params.description }}",
-    "priceRange": "{{ .Site.Params.schema.priceRange | default "€" }}",
-    "openingHoursSpecification": {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-        "Sunday"
-      ],
-      "opens": "00:00",
-      "closes": "23:59"
-    }
-  }
-  </script>
-  {{ end }}
+  {{ partial "schema.html" . }}
 
   <!-- Favicon -->
   <link rel="icon" href="{{ "favicon.ico" | relURL }}" type="image/x-icon">

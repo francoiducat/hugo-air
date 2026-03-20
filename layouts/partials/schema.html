@@ -1,0 +1,111 @@
+{{ if .Params.schema }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "{{ .Params.schema.type | default "VacationRental" }}",
+  "name": "{{ .Title }}",
+  "image": [
+    {{ range $index, $element := .Params.schema.images }}
+      {{ if $index }},{{ end }}"{{ $element | absURL }}"
+    {{ end }}
+    {{ if not .Params.schema.images }}
+      "{{ .Params.featured_image | default "featured-image.jpg" | absURL }}"
+    {{ end }}
+  ],
+  "description": "{{ .Params.description | default .Description }}",
+  "url": "{{ .Permalink }}",
+  {{ with .Params.schema.identifier }}"identifier": "{{ . }}",{{ end }}
+  {{ with .Params.schema.address }}
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "{{ .street }}",
+    "addressLocality": "{{ .locality }}",
+    "postalCode": "{{ .postalCode }}",
+    "addressCountry": "{{ .country }}"
+  },
+  {{ end }}
+  {{ with .Params.schema.geo }}
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": {{ .latitude }},
+    "longitude": {{ .longitude }}
+  },
+  {{ end }}
+  {{ with .Params.schema.priceRange }}"priceRange": "{{ . }}",{{ end }}
+  {{ with .Params.schema.checkinTime }}"checkinTime": "{{ . }}",{{ end }}
+  {{ with .Params.schema.checkoutTime }}"checkoutTime": "{{ . }}",{{ end }}
+  {{ with .Params.schema.occupancy }}
+  "occupancy": {
+    "@type": "QuantitativeValue",
+    "minValue": {{ .min | default 1 }},
+    "maxValue": {{ .max }}
+  },
+  {{ end }}
+  {{ with .Params.schema.numberOfRooms }}"numberOfRooms": {{ . }},{{ end }}
+  {{ with .Params.schema.amenities }}
+  "amenityFeature": [
+    {{ range $index, $element := . }}
+      {{ if $index }},{{ end }}
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "{{ $element.name }}",
+        "value": {{ $element.value | default true }}
+      }
+    {{ end }}
+  ],
+  {{ end }}
+  {{ if .Params.schema.sameAs }}
+  "sameAs": [
+    {{ range $index, $element := .Params.schema.sameAs }}
+      {{ if $index }},{{ end }}"{{ $element }}"
+    {{ end }}
+  ],
+  {{ end }}
+  "knowsLanguage": ["fr-FR", "en-GB"]
+}
+</script>
+{{ else if .Site.Params.schema }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "{{ .Site.Params.schema.type | default "Website" }}",
+  "name": "{{ .Site.Title }}",
+  "image": "{{ "featured-image.jpg" | absURL }}",
+  "url": "{{ .Site.BaseURL }}",
+  {{ with .Site.Params.telephone }}"telephone": "{{ . }}",{{ end }}
+  {{ with .Site.Params.gmaps_url }}"hasMap": "{{ . }}",{{ end }}
+  {{ with .Site.Params.schema.address }}
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "{{ .street }}",
+    "addressLocality": "{{ .locality }}",
+    "postalCode": "{{ .postalCode }}",
+    "addressCountry": "{{ .country }}"
+  },
+  {{ end }}
+  {{ with .Site.Params.schema.geo }}
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": {{ .latitude }},
+    "longitude": {{ .longitude }}
+  },
+  {{ end }}
+  "description": "{{ .Site.Params.description }}",
+  "priceRange": "{{ .Site.Params.schema.priceRange | default "€" }}",
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ],
+    "opens": "00:00",
+    "closes": "23:59"
+  }
+}
+</script>
+{{ end }}
